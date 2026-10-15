@@ -1,0 +1,619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+	<link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
+	<link href="https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-ireland" rel="self" type="application/atom+xml"/>
+	<link href="https://meteoalarm.org" rel="alternate" type="text/html"/>
+	<rights>Copyright (c) 2022, meteoalarm.org</rights>
+	<generator>Meteoalarm Producer Server</generator>
+	<logo>https://feeds.meteoalarm.org/images/logo.svg</logo>
+	<author>
+		<name>meteoalarm.org</name>
+		<uri>https://meteoalarm.org</uri>
+		<email>meteoalarm@zamg.ac.at</email>
+	</author>
+	<id>tag:meteoalarm.org,2021-02-19:IE</id>
+	<title>Meteoalarm - severe weather warnings for Europe</title>
+	<updated>2022-12-07T23:05:50.466496Z</updated>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI10</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE015" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=25</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI20</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE016" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=24</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI14</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE029" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=23</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI24</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE026" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=22</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI25</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE017" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=21</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI11</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE008" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=20</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI04</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE007" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=19</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI03</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE014" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=18</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI16</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE013" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=17</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI27</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE009" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=16</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI26</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE006" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=15</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI06</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE018" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=14</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI22</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE031" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=13</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI02</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE027" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=12</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI07</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE012" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=11</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI12</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE030" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=10</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI13</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE021" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=9</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI29</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE024" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=8</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI15</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE022" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=7</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>FIPS</valueName>
+			<value>EI01</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:IE020" hreflang="en" title="Ireland"/>
+		<cap:areaDesc>Ireland</cap:areaDesc>
+		<cap:event>Yellow Low Temperature/Ice</cap:event>
+		<cap:sent>2022-12-06T23:27:41+00:00</cap:sent>
+		<cap:expires>2022-12-08T11:59:59+00:00</cap:expires>
+		<cap:effective>2022-12-06T23:27:41+00:00</cap:effective>
+		<cap:onset>2022-12-08T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.1.372.0.221206232741.M_LowTemp003</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=IE" hreflang="en" rel="related" title="Ireland"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2022-12-06T23:27:41Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-ireland/558830a2-74a1-402a-915c-ab365ec68d25?index_info=0&amp;index_area=0&amp;index_geocode=6</id>
+		<title>Yellow Low-temperature Warning issued for Ireland - Ireland</title>
+		<updated>2022-12-06T23:27:41Z</updated>
+	</entry>
+</feed>

@@ -1,61 +1,194 @@
-# Demo Devices Template
+# MeteoAlarm
 
-This is the user documentation of the integration. Gladys re-hosts this file
-and shows a permanent **Documentation** link to it in the Configuration screen
-(in the user's language, with English as the fallback) — it is when
-configuring that the user needs it most. Keep the short onboarding hints in
-the `section` blocks of the manifest `config_schema`; put the long
-step-by-step (screenshots, troubleshooting…) here.
+The official weather warnings of 38 European countries in Gladys: Belgium,
+Switzerland, Luxembourg, Germany, Spain, Italy, the Netherlands, Ireland,
+Austria… and France. The national weather services (RMI, MeteoSwiss,
+MeteoLux, DWD, AEMET, Met Éireann…) publish them on
+[MeteoAlarm](https://meteoalarm.org), run by EUMETNET; the integration reads
+these public feeds. No account, no key.
 
-## What you get
+This integration is not affiliated with EUMETNET or MeteoAlarm. It was
+developed without access to the live feed, from real published samples:
+feedback welcome on the Gladys forum or in the GitHub issues.
 
-Six demo devices show up after installation: a weather station (real data
-from Open-Meteo), a switch, a dimmable light, a smart plug with power
-metering, a motion sensor and a camera.
+## What it does
+
+- **One device per zone you follow** (a province, a canton, a county, a
+  department…), and optionally one for a house of Gladys.
+- On each device: the **highest warning level in force** (green, yellow,
+  orange, red), the level **per phenomenon** (wind, rain, thunderstorms,
+  snow and ice, heat, cold, avalanches, forest fire, coastal event, fog,
+  flooding, rain and flooding), and the texts: current and upcoming
+  warnings, description, start and end.
+- A **dashboard widget** listing the warnings of a zone with their color,
+  phenomenon, times and full text.
+- Two **scene triggers**: "New weather warning" (often the day before it
+  starts) and "Weather warning lifted".
+- Read only: the integration never controls anything.
+
+For France, the Météo-France integration (another author) follows the
+departmental vigilance in more detail. This one is meant above all for the
+neighboring countries and for cross-border workers, with the same tool on
+both sides of the border.
+
+## Requirements
+
+- Gladys **5.2.0** or later.
+- Internet access from the Gladys host: the feeds are on
+  `feeds.meteoalarm.org`.
+- To follow a house: a house **located** in Gladys (Settings → Houses), in a
+  country whose weather service outlines its warning areas (see
+  [Limitations](#limitations)).
 
 ## Configuration
 
-1. Open the **Configuration** tab of the integration.
-2. Set the **latitude** and **longitude** the demo weather station should
-   observe (they default to Paris), and pick your temperature unit.
-   The **refresh interval** sets how often the weather station and the
-   plug's power are read: every 5 minutes by default, every minute at most.
-3. Save: the devices appear in the **Discovery** tab, ready to be added.
+1. Install the integration: **Integrations → Install from GitHub**, address
+   `https://github.com/guim31/gladys-meteoalarm`.
+2. In its **Configuration** tab, choose the **country**.
+3. Type your **zones**, separated by commas (10 at most): the name of the
+   area as shown on meteoalarm.org (e.g. `Liège`, `Haute Savoie`,
+   `Strathclyde`), or its code (the MeteoAlarm `EMMA_ID` such as `BE009`, or
+   the national code of the feed such as `FR718`). Accents, case and dashes
+   do not matter, but the name must be complete: `Savoie` is not
+   `Haute Savoie`.
+4. Optionally choose a **house**: the integration then follows the warnings
+   whose area contains it.
+5. Choose the **language** of the feature names and texts (French by
+   default) and the **refresh** (every 10 or 15 minutes).
+6. Save, then add the devices from the **Discovery** tab.
 
-The **Prefer the local connection** toggle drives the demo plug: it reports
-the channel it actually uses as a badge (local or cloud), with an orange dot
-when it runs degraded (local refused, cloud fallback).
+The **List the zones** action reads the feed at once and lists the zones
+known for the country with their code, and whether yours were found. A feed
+only lists the zones that have a warning today: the list grows with each
+warning seen since the installation, and "not seen yet" next to one of your
+zones simply means it has had no warning since then. Check its spelling on
+meteoalarm.org in that case.
 
-## Actions
+The identifier of a zone device comes from what you type (accents and case
+ignored): typing `BE009` instead of `Liège` creates another device.
 
-- **Test the weather provider** — performs a live request to Open-Meteo and
-  shows the current temperature and humidity under the button.
-- **Identify a device** — pick one of your devices in the list and it will
-  signal itself (the demo light "blinks" in the logs).
+## Refresh and terms of use
 
-## Scenes
+- The feed of the country is read **every 10 or 15 minutes** (one request
+  for all your zones), with `If-None-Match` / `If-Modified-Since`: an
+  unchanged feed costs a 304 answer.
+- The detail of a warning (CAP document: texts, languages, area outlines) is
+  read **once** per version of the warning, and only for the zones you
+  follow. A house needs the detail of every warning of the country, read 40
+  at most per refresh.
+- Between two readings, the start and end times are checked **every
+  minute** without any request: a warning comes into force and ends on the
+  minute.
+- The integration does not count on Gladys to poll its devices: it refreshes
+  by itself.
+- MeteoAlarm publishes these feeds for public use and publishes no request
+  quota; the integration stays far below one request a minute, identifies
+  itself (User-Agent) and cites its source in the widget. Read the terms of
+  use on meteoalarm.org. The warnings remain those of the national weather
+  services: for any decision, refer to their official channels.
 
-The integration adds its own cards to the scene editor (Gladys 5.1 or
-later), under the **Integrations** category:
+## Devices
 
-- **Motion detected** (trigger) — starts the scene when a demo motion sensor
-  sees something move. Optionally pick the sensor and what moved (person,
-  animal); left empty, any detection matches. The following actions can
-  read what moved with `{{triggerEvent.data.target}}`.
-- **Identify a device** (action) — makes the chosen device signal itself.
-  It returns whether the device could signal itself, so the following
-  actions can depend on it.
+Each zone (or house) gives a device "MeteoAlarm <zone>". The feature names
+are set in the configured language when you add the device.
 
-## Dashboard
+| Feature                       | Type       | Value                                                      |
+| ----------------------------- | ---------- | ---------------------------------------------------------- |
+| Highest warning level         | risk level | 0 green (no warning), 1 yellow, 2 orange, 3 red            |
+| Wind warning, Rain warning…   | risk level | the same, for one phenomenon (12 features)                 |
+| Current and upcoming warnings | text       | "Orange: Wind (Thu 15 Oct, 06:00 → Thu 15 Oct, 21:00) · …" |
+| Warning description           | text       | headline and description of the main warning               |
+| Warning start, Warning end    | text       | its period, in the time zone of Gladys                     |
 
-Add the **Demo status** widget to a dashboard: it shows the live
-temperature of the weather station and the power of the office plug, the
-connection the plug currently uses (orange when degraded) and the observed
-location. Its **Identify the light** button makes the demo light signal
-itself.
+Gladys draws the risk levels as colored badges: "No risk" green, "Low"
+yellow, "Medium" orange, "High" red — the MeteoAlarm colors.
+
+The level features only count the warnings **in force**. A warning announced
+for tomorrow appears at once in the text, in the widget and in the "New
+weather warning" trigger. The main warning is the highest in force, else the
+next one announced. The texts are in the configured language when the
+issuer writes it, else in English, else in the language of the country.
+
+## Dashboard widget
+
+Add the **Weather warnings** widget to a dashboard and choose a zone in its
+settings. It shows the highest level, then the warnings in force (highest
+first) and those announced, each with its color, phenomenon and period. A
+tap on a warning opens its full text: headline, description and advice from
+the weather service. The texts follow the language of the dashboard when the
+issuer writes it. The last line cites the source, or says that MeteoAlarm
+does not answer and the warnings shown may be out of date.
+
+## Scene triggers
+
+In the scene editor (Integrations category):
+
+- **New weather warning**: a warning appears for a zone, or its level rises
+  (yellow wind, then orange wind: announced twice; a lower level is no news).
+  It often fires the day before the warning starts. Filters: the zone, the
+  levels (yellow, orange, red), the phenomena. Variables:
+  `{{triggerEvent.data.zone}}`, `level` (`yellow`, `orange`, `red`),
+  `level_label`, `phenomenon`, `phenomenon_label`, `in_force` (true when
+  already in force), `period` (in words), `onset` and `expires` (ISO dates),
+  `headline`, `description`, `instruction`.
+- **Weather warning lifted**: a zone has no warning left for a phenomenon,
+  expired or withdrawn. Filters: the zone, the phenomena. Variables: `zone`,
+  `level`, `level_label` (the last level), `phenomenon`, `phenomenon_label`.
+
+The first reading after the installation is silent (installing during a
+storm does not start every scene at once), and a restart does not announce
+again what was already announced. To act on a level **in force**, use the
+usual "device value" trigger on the level features.
+
+## Scene examples
+
+- **Wind announced**: trigger "New weather warning", levels orange and red,
+  phenomenon wind → send the message "{{triggerEvent.data.level_label}}
+  warning, {{triggerEvent.data.phenomenon_label}}:
+  {{triggerEvent.data.period}}. {{triggerEvent.data.headline}}".
+- **Orange or red in force**: trigger "device value" on "Highest warning
+  level" of your zone, greater than or equal to 2 → turn the hall lamp
+  orange; another scene at 0 turns it off.
+- **Heat**: "Heat warning" greater than or equal to 1 → close the south
+  shutters at 11:00 while it lasts.
+- **End of the warning**: trigger "Weather warning lifted" → send "The
+  {{triggerEvent.data.phenomenon_label}} warning is over for
+  {{triggerEvent.data.zone}}".
 
 ## Troubleshooting
 
-The integration logs everything it does: check the integration logs from the
-Gladys UI (or `docker logs` on the host) with `LOG_LEVEL=debug` for the full
-detail.
+- **"Choose the country of your zones" / "Enter at least one zone"**: the
+  configuration is incomplete.
+- **"MeteoAlarm has no feed for this country"**: the feed address answered 404. Report it: MeteoAlarm may have renamed it.
+- **"MeteoAlarm does not answer"**: network or service down. The last
+  reading stays in place and the integration tries again at each refresh;
+  the logs say it once, and once when it answers again.
+- **A zone stays green while meteoalarm.org shows a warning**: run **List
+  the zones** and compare the spelling, or type the code given there.
+- **No description, only the title**: the detail of the warning could not be
+  read; it is tried again after the next reading of the feed.
+- **"This country feed does not outline its areas"**: the house cannot be
+  placed; follow zones instead.
+- **The house has no location**: set it in Settings → Houses.
+- Detailed logs: start the integration with `LOG_LEVEL=debug`. A normal cycle
+  writes nothing at the info level.
+
+## Limitations
+
+- Developed without access to the live feed (the development environment
+  could not reach it): tested on real feeds published with the
+  `meteoalert-api` library (France, Ireland, United Kingdom, 2022) and on a
+  synthetic Belgian feed. The country list follows the addresses used by that
+  library. Feedback welcome.
+- A feed only lists the zones that have a warning: there is no complete list
+  of the zones of a country, hence the typed names and codes.
+- Following a house works only where the weather service outlines its areas
+  in the warning details (Ireland does, France and the United Kingdom did not
+  in the samples).
+- One country per installation, 10 zones at most.
+- The texts are those of the weather services: their language depends on the
+  issuer.
+- MeteoAlarm calls this Atom feed "legacy": if it is retired, the integration
+  will have to follow.
+- Not an official alert system: for any decision, refer to the national
+  weather service.

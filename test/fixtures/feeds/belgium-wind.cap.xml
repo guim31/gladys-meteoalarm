@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<alert
+	xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+	<identifier>2.49.0.0.56.0.BE.20261011</identifier>
+	<sender>meteoalarm@meteo.be</sender>
+	<sent>2026-10-15T05:00:00+00:00</sent>
+	<status>Actual</status>
+	<msgType>Alert</msgType>
+	<scope>Public</scope>
+	<info>
+		<language>nl-BE</language>
+		<category>Met</category>
+		<event>Oranje windwaarschuwing</event>
+		<responseType>Monitor</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<effective>2026-10-15T05:00:00+00:00</effective>
+		<onset>2026-10-15T06:00:00+00:00</onset>
+		<expires>2026-10-15T21:00:00+00:00</expires>
+		<senderName>IRM - KMI</senderName>
+		<headline>Zware windstoten</headline>
+		<description>Windstoten tot 100 km/u verwacht.</description>
+		<instruction>Blijf binnen en zet losse voorwerpen vast.</instruction>
+		<web>https://www.meteo.be</web>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Liège</areaDesc>
+			<polygon>50.200000,5.300000 50.850000,5.300000 50.850000,6.450000 50.200000,6.450000 50.200000,5.300000</polygon>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE332</value>
+			</geocode>
+		</area>
+		<area>
+			<areaDesc>Luxembourg</areaDesc>
+			<polygon>49.480000,4.950000 50.200000,4.950000 50.200000,6.050000 49.480000,6.050000 49.480000,4.950000</polygon>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE341</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>fr-BE</language>
+		<category>Met</category>
+		<event>Avertissement orange vent</event>
+		<responseType>Monitor</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<effective>2026-10-15T05:00:00+00:00</effective>
+		<onset>2026-10-15T06:00:00+00:00</onset>
+		<expires>2026-10-15T21:00:00+00:00</expires>
+		<senderName>IRM - KMI</senderName>
+		<headline>Fortes rafales de vent</headline>
+		<description>Rafales jusqu&apos;à 100 km/h attendues sur les hauteurs.</description>
+		<instruction>Restez à l&apos;intérieur et fixez les objets.</instruction>
+		<web>https://www.meteo.be</web>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Liège</areaDesc>
+			<polygon>50.200000,5.300000 50.850000,5.300000 50.850000,6.450000 50.200000,6.450000 50.200000,5.300000</polygon>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE332</value>
+			</geocode>
+		</area>
+		<area>
+			<areaDesc>Luxembourg</areaDesc>
+			<polygon>49.480000,4.950000 50.200000,4.950000 50.200000,6.050000 49.480000,6.050000 49.480000,4.950000</polygon>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE341</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>de-DE</language>
+		<category>Met</category>
+		<event>Orange Windwarnung</event>
+		<responseType>Monitor</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<effective>2026-10-15T05:00:00+00:00</effective>
+		<onset>2026-10-15T06:00:00+00:00</onset>
+		<expires>2026-10-15T21:00:00+00:00</expires>
+		<senderName>IRM - KMI</senderName>
+		<headline>Schwere Sturmböen</headline>
+		<description>Böen bis 100 km/h werden erwartet.</description>
+		<instruction>Bleiben Sie drinnen und sichern Sie lose Gegenstände.</instruction>
+		<web>https://www.meteo.be</web>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Liège</areaDesc>
+			<polygon>50.200000,5.300000 50.850000,5.300000 50.850000,6.450000 50.200000,6.450000 50.200000,5.300000</polygon>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE332</value>
+			</geocode>
+		</area>
+		<area>
+			<areaDesc>Luxembourg</areaDesc>
+			<polygon>49.480000,4.950000 50.200000,4.950000 50.200000,6.050000 49.480000,6.050000 49.480000,4.950000</polygon>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE341</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en-GB</language>
+		<category>Met</category>
+		<event>Orange wind warning</event>
+		<responseType>Monitor</responseType>
+		<urgency>Future</urgency>
+		<severity>Severe</severity>
+		<certainty>Likely</certainty>
+		<effective>2026-10-15T05:00:00+00:00</effective>
+		<onset>2026-10-15T06:00:00+00:00</onset>
+		<expires>2026-10-15T21:00:00+00:00</expires>
+		<senderName>IRM - KMI</senderName>
+		<headline>Severe gusts of wind</headline>
+		<description>Gusts up to 100 km/h are expected on high ground.</description>
+		<instruction>Stay indoors and secure loose objects.</instruction>
+		<web>https://www.meteo.be</web>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>3; orange; Severe</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>1; Wind</value>
+		</parameter>
+		<area>
+			<areaDesc>Liège</areaDesc>
+			<polygon>50.200000,5.300000 50.850000,5.300000 50.850000,6.450000 50.200000,6.450000 50.200000,5.300000</polygon>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE332</value>
+			</geocode>
+		</area>
+		<area>
+			<areaDesc>Luxembourg</areaDesc>
+			<polygon>49.480000,4.950000 50.200000,4.950000 50.200000,6.050000 49.480000,6.050000 49.480000,4.950000</polygon>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE341</value>
+			</geocode>
+		</area>
+	</info>
+</alert>
