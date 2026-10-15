@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-15
+
 ### Added
 
 - The official weather warnings of 38 European countries, read from the public
@@ -33,4 +35,5 @@ the notes of the version's GitHub Release.
 - Refresh every 10 or 15 minutes, start and end times followed to the minute.
 - Documentation in English, French, German and Spanish.
 
-[Unreleased]: https://github.com/guim31/gladys-meteoalarm/commits/main
+[Unreleased]: https://github.com/guim31/gladys-meteoalarm/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/guim31/gladys-meteoalarm/releases/tag/v1.0.1
