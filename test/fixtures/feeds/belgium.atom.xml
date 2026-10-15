@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed
+	xmlns="http://www.w3.org/2005/Atom"
+	xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+	<link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
+	<link href="https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-belgium" rel="self" type="application/atom+xml"/>
+	<link href="https://meteoalarm.org" rel="alternate" type="text/html"/>
+	<rights>Copyright (c) 2026, meteoalarm.org</rights>
+	<generator>Meteoalarm Producer Server</generator>
+	<logo>https://feeds.meteoalarm.org/images/logo.svg</logo>
+	<author>
+		<name>meteoalarm.org</name>
+		<uri>https://meteoalarm.org</uri>
+		<email>meteoalarm@zamg.ac.at</email>
+	</author>
+	<id>tag:meteoalarm.org,2021-02-19:BE</id>
+	<title>Meteoalarm - severe weather warnings for Europe</title>
+	<updated>2026-10-15T05:12:40.000000Z</updated>
+	<entry>
+		<cap:geocode>
+			<valueName>NUTS3</valueName>
+			<value>BE332</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:BE009" hreflang="en" title="Liège"/>
+		<cap:areaDesc>Liège</cap:areaDesc>
+		<cap:event>Severe wind warning</cap:event>
+		<cap:sent>2026-10-15T05:00:00+00:00</cap:sent>
+		<cap:expires>2026-10-15T21:00:00+00:00</cap:expires>
+		<cap:effective>2026-10-15T05:00:00+00:00</cap:effective>
+		<cap:onset>2026-10-15T06:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Severe</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.0.56.0.BE.20261011</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000001" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=BE" hreflang="en" rel="related" title="Belgium"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2026-10-15T05:00:00Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000001?index_info=0&amp;index_area=0&amp;index_geocode=0</id>
+		<title>Orange Wind Warning issued for Belgium - Liège</title>
+		<updated>2026-10-15T05:00:00Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>NUTS3</valueName>
+			<value>BE341</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:BE010" hreflang="en" title="Luxembourg"/>
+		<cap:areaDesc>Luxembourg</cap:areaDesc>
+		<cap:event>Severe wind warning</cap:event>
+		<cap:sent>2026-10-15T05:00:00+00:00</cap:sent>
+		<cap:expires>2026-10-15T21:00:00+00:00</cap:expires>
+		<cap:effective>2026-10-15T05:00:00+00:00</cap:effective>
+		<cap:onset>2026-10-15T06:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Severe</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.0.56.0.BE.20261011</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000001" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=BE" hreflang="en" rel="related" title="Belgium"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2026-10-15T05:00:00Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000001?index_info=0&amp;index_area=0&amp;index_geocode=0</id>
+		<title>Orange Wind Warning issued for Belgium - Luxembourg</title>
+		<updated>2026-10-15T05:00:00Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>NUTS3</valueName>
+			<value>BE332</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:BE009" hreflang="en" title="Liège"/>
+		<cap:areaDesc>Liège</cap:areaDesc>
+		<cap:event>Moderate rain warning</cap:event>
+		<cap:sent>2026-10-15T05:00:00+00:00</cap:sent>
+		<cap:expires>2026-10-16T18:00:00+00:00</cap:expires>
+		<cap:effective>2026-10-15T05:00:00+00:00</cap:effective>
+		<cap:onset>2026-10-16T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.0.56.0.BE.20261012</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000002" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=BE" hreflang="en" rel="related" title="Belgium"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2026-10-15T05:00:00Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000002?index_info=0&amp;index_area=0&amp;index_geocode=0</id>
+		<title>Yellow Rain Warning issued for Belgium - Liège</title>
+		<updated>2026-10-15T05:00:00Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>NUTS3</valueName>
+			<value>BE352</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:BE011" hreflang="en" title="Namur"/>
+		<cap:areaDesc>Namur</cap:areaDesc>
+		<cap:event>Moderate rain warning</cap:event>
+		<cap:sent>2026-10-15T05:00:00+00:00</cap:sent>
+		<cap:expires>2026-10-16T18:00:00+00:00</cap:expires>
+		<cap:effective>2026-10-15T05:00:00+00:00</cap:effective>
+		<cap:onset>2026-10-16T00:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.0.56.0.BE.20261012</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000002" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=BE" hreflang="en" rel="related" title="Belgium"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2026-10-15T05:00:00Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000002?index_info=0&amp;index_area=0&amp;index_geocode=0</id>
+		<title>Yellow Rain Warning issued for Belgium - Namur</title>
+		<updated>2026-10-15T05:00:00Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>NUTS3</valueName>
+			<value>BE341</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:BE010" hreflang="en" title="Luxembourg"/>
+		<cap:areaDesc>Luxembourg</cap:areaDesc>
+		<cap:event>Moderate thunderstorm warning</cap:event>
+		<cap:sent>2026-10-15T04:00:00+00:00</cap:sent>
+		<cap:expires>2026-10-15T20:00:00+00:00</cap:expires>
+		<cap:effective>2026-10-15T04:00:00+00:00</cap:effective>
+		<cap:onset>2026-10-15T12:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Cancel</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.0.56.0.BE.20261013</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000003" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=BE" hreflang="en" rel="related" title="Belgium"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2026-10-15T04:00:00Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000003?index_info=0&amp;index_area=0&amp;index_geocode=0</id>
+		<title>Yellow Thunderstorm Warning issued for Belgium - Luxembourg</title>
+		<updated>2026-10-15T04:00:00Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>NUTS3</valueName>
+			<value>BE211</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:BE004" hreflang="en" title="Antwerpen"/>
+		<cap:areaDesc>Antwerpen</cap:areaDesc>
+		<cap:event>Extreme wind warning</cap:event>
+		<cap:sent>2026-10-15T04:00:00+00:00</cap:sent>
+		<cap:expires>2026-10-15T20:00:00+00:00</cap:expires>
+		<cap:effective>2026-10-15T04:00:00+00:00</cap:effective>
+		<cap:onset>2026-10-15T06:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Extreme</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Test</cap:status>
+		<cap:identifier>2.49.0.0.56.0.BE.20261014</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000004" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=BE" hreflang="en" rel="related" title="Belgium"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2026-10-15T04:00:00Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000004?index_info=0&amp;index_area=0&amp;index_geocode=0</id>
+		<title>Red Wind Warning issued for Belgium - Antwerpen</title>
+		<updated>2026-10-15T04:00:00Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>NUTS3</valueName>
+			<value>BE352</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:BE011" hreflang="en" title="Namur"/>
+		<cap:areaDesc>Namur</cap:areaDesc>
+		<cap:event>Moderate fog warning</cap:event>
+		<cap:sent>2026-10-14T20:00:00+00:00</cap:sent>
+		<cap:expires>2026-10-15T04:00:00+00:00</cap:expires>
+		<cap:effective>2026-10-14T20:00:00+00:00</cap:effective>
+		<cap:onset>2026-10-14T22:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Moderate</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.0.56.0.BE.20261015</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000005" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=BE" hreflang="en" rel="related" title="Belgium"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2026-10-14T20:00:00Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000005?index_info=0&amp;index_area=0&amp;index_geocode=0</id>
+		<title>Yellow Fog Warning issued for Belgium - Namur</title>
+		<updated>2026-10-14T20:00:00Z</updated>
+	</entry>
+	<entry>
+		<cap:geocode>
+			<valueName>NUTS3</valueName>
+			<value>BE323</value>
+		</cap:geocode>
+		<link href="https://meteoalarm.org?geocode=EMMA_ID:BE007" hreflang="en" title="Hainaut"/>
+		<cap:areaDesc>Hainaut</cap:areaDesc>
+		<cap:event>Minor wind warning</cap:event>
+		<cap:sent>2026-10-15T05:00:00+00:00</cap:sent>
+		<cap:expires>2026-10-15T21:00:00+00:00</cap:expires>
+		<cap:effective>2026-10-15T05:00:00+00:00</cap:effective>
+		<cap:onset>2026-10-15T06:00:00+00:00</cap:onset>
+		<cap:certainty>Likely</cap:certainty>
+		<cap:severity>Minor</cap:severity>
+		<cap:urgency>Future</cap:urgency>
+		<cap:scope>Public</cap:scope>
+		<cap:message_type>Alert</cap:message_type>
+		<cap:status>Actual</cap:status>
+		<cap:identifier>2.49.0.0.56.0.BE.20261016</cap:identifier>
+		<link href="https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000006" type="application/cap+xml"/>
+		<link href="https://meteoalarm.org?region=BE" hreflang="en" rel="related" title="Belgium"/>
+		<author>
+			<name>meteoalarm.org</name>
+			<uri>https://meteoalarm.org</uri>
+		</author>
+		<published>2026-10-15T05:00:00Z</published>
+		<id>https://feeds.meteoalarm.org/api/v1/warnings/feeds-belgium/7d1c1e52-0b6e-4c58-9a1e-000000000006?index_info=0&amp;index_area=0&amp;index_geocode=0</id>
+		<title>Green Wind Warning issued for Belgium - Hainaut</title>
+		<updated>2026-10-15T05:00:00Z</updated>
+	</entry>
+</feed>

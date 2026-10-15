@@ -1,77 +1,140 @@
+// -----------------------------------------------------------------------------
+// The "warnings" dashboard widget: content valid for the core in every
+// language and every state (the SDK's validateWidgetContent mirrors the core
+// rules: vocabulary, text bounds, budget of 8 components and 2 texts).
+// -----------------------------------------------------------------------------
+
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { validateWidgetContent } from '@gladysassistant/integration-sdk';
-import { createFakeGladys } from '@gladysassistant/integration-sdk/testing';
-import { buildDiscoveredDevices } from '../src/devices/index.js';
-import { simulateLanSession } from '../src/devices/plug.js';
-import { DEMO_STATUS_WIDGET, WIDGETS, refreshWidgets } from '../src/widgets.js';
-import { normalizeConfig } from '../src/config.js';
+import { buildWarningsContent } from '../src/widgets.js';
+import { evaluate } from '../src/warnings.js';
+import { createWorld } from './helpers/world.js';
 
-const gladys = createFakeGladys();
-const config = normalizeConfig();
-const demoStatus = WIDGETS[DEMO_STATUS_WIDGET];
+const LANGS = ['en', 'fr', 'de', 'es'];
+const CONFIG = { country: 'belgium', zones: 'Liège, Hainaut', language: 'fr' };
 
-// What the SDK passes to onWidgetGet, plus the config index.js adds.
-const getContent = (cfg = config) =>
-  demoStatus.get(gladys, { settings: {}, language: 'en', units: 'metric', config: cfg });
+async function contentOf(world, zone, language) {
+  const device = world.gladys.externalIds('zone', `belgium.${zone}`).device;
+  const ack = await world.gladys.fake.widgetGet('warnings', { settings: { device }, language });
+  assert.equal(ack.success, true);
+  return ack.data.content;
+}
 
-test('the demo_status content is rendered exactly as sent', async () => {
-  // [] = nothing the core would drop, truncate or trim to the content budget.
-  assert.deepEqual(validateWidgetContent(await getContent()), []);
-});
-
-test('the degraded plug connection content is valid too', async () => {
-  simulateLanSession(false);
-  try {
-    const content = await getContent();
-    assert.deepEqual(validateWidgetContent(content), []);
-    const status = content.components.find((component) => component.type === 'status');
-    assert.ok(
-      status.items.some((item) => item.color === 'warning'),
-      'degraded shows a warning',
-    );
-  } finally {
-    simulateLanSession(true);
+test('warnings in force and announced, in every language, as the core accepts them', async () => {
+  const world = await createWorld({
+    config: CONFIG,
+    feeds: { belgium: 'belgium.atom.xml' },
+    now: '2026-10-15T08:00:00Z',
+  });
+  await world.createAll();
+  for (const language of LANGS) {
+    const content = await contentOf(world, 'liege', language);
+    assert.deepEqual(validateWidgetContent(content), [], language);
+    const texts = content.components.filter((component) => component.type === 'text');
+    assert.ok(texts.length <= 2);
   }
-});
-
-test('the live tiles reference features the integration publishes', async () => {
-  const featureIds = new Set(
-    buildDiscoveredDevices(gladys, config).flatMap((device) =>
-      device.features.map((feature) => feature.external_id),
-    ),
+  const content = await contentOf(world, 'liege', 'en');
+  const list = content.components.find((component) => component.type === 'card-list');
+  assert.deepEqual(
+    list.items.map((item) => [item.title, item.subtitle, item.badge]),
+    [
+      [
+        'Orange: Wind',
+        'in force · Thu 15 Oct, 06:00 → Thu 15 Oct, 21:00',
+        { text: 'Orange', color: 'danger' },
+      ],
+      [
+        'Yellow: Rain',
+        'upcoming · Fri 16 Oct, 00:00 → Fri 16 Oct, 18:00',
+        { text: 'Yellow', color: 'warning' },
+      ],
+    ],
   );
-  const liveTiles = (await getContent()).components.filter((c) => c.device_feature);
-  assert.ok(liveTiles.length > 0, 'the template demonstrates a device-bound tile');
-  for (const tile of liveTiles) {
-    assert.ok(featureIds.has(tile.device_feature), `unknown feature ${tile.device_feature}`);
-  }
+  assert.equal(
+    list.items[0].description,
+    'Severe gusts of wind\n\nGusts up to 100 km/h are expected on high ground.\n\n' +
+      'Stay indoors and secure loose objects.',
+  );
+  assert.deepEqual(content.components[1].items[0], {
+    label: 'Highest level',
+    value: 'Orange',
+    color: 'danger',
+    icon: 'alert-triangle',
+  });
+  // The texts of the dashboard language when the issuer wrote it.
+  const german = await contentOf(world, 'liege', 'de');
+  assert.match(german.components[2].items[0].description, /^Schwere Sturmböen/);
 });
 
-test('every button action of the content is handled and answers a short toast', async () => {
-  const buttons = (await getContent()).components.filter((c) => c.type === 'button' && c.action);
-  assert.ok(buttons.length > 0, 'the template demonstrates a widget action');
-  for (const { action } of buttons) {
-    const message = await demoStatus.action(gladys, {
-      actionKey: action.key,
-      params: action.params ?? {},
-      settings: {},
-      config,
+test('a zone without warning, a widget without zone, before the first reading', async () => {
+  const world = await createWorld({
+    config: CONFIG,
+    feeds: { belgium: 'belgium.atom.xml' },
+    now: '2026-10-15T08:00:00Z',
+    connect: false,
+  });
+  world.server.failure = 503;
+  await world.gladys.connect();
+  await world.app.ready;
+  for (const language of LANGS) {
+    const waiting = await contentOf(world, 'liege', language);
+    assert.deepEqual(validateWidgetContent(waiting), []);
+    const pick = (await world.gladys.fake.widgetGet('warnings', { settings: {}, language })).data
+      .content;
+    assert.deepEqual(validateWidgetContent(pick), []);
+  }
+  world.server.failure = null;
+  await world.app.refresh({ force: true });
+  const quiet = await contentOf(world, 'hainaut', 'fr');
+  assert.deepEqual(validateWidgetContent(quiet), []);
+  assert.deepEqual(quiet.components[1].items[0], {
+    label: 'Niveau maximal',
+    value: 'Aucune vigilance',
+    color: 'success',
+    icon: 'check-circle',
+  });
+  assert.equal(quiet.components.length, 3, 'no list');
+  // An unknown language falls back to the configured one.
+  const fallback = await contentOf(world, 'hainaut', 'it');
+  assert.equal(fallback.components[1].items[0].label, 'Niveau maximal');
+});
+
+test('many warnings: 8 at most in the list, long texts cut to the core bounds', () => {
+  const warnings = Array.from({ length: 11 }, (_, index) => ({
+    level: 2 + (index % 3),
+    phenomenon: ['wind', 'rain', 'fog'][index % 3],
+    onset: `2026-10-15T0${index % 10}:00:00Z`,
+    expires: null,
+    texts: [{ language: 'en-gb', headline: 'H'.repeat(500), description: 'D'.repeat(3000) }],
+  }));
+  const target = { name: `MeteoAlarm ${'Very long zone name '.repeat(4)}`, ids: {} };
+  for (const language of LANGS) {
+    const content = buildWarningsContent({
+      target,
+      evaluation: evaluate(warnings, Date.parse('2026-10-15T05:30:00Z')),
+      language,
+      timeZone: 'UTC',
     });
-    assert.ok(message.en, 'the toast carries at least the mandatory `en` text');
-    assert.ok(message.en.length <= 200, 'toasts are capped at 200 characters');
+    assert.deepEqual(validateWidgetContent(content), [], language);
+    const list = content.components.find((component) => component.type === 'card-list');
+    assert.equal(list.items.length, 8);
   }
 });
 
-test('an unknown widget action fails, so the user sees the error', async () => {
-  await assert.rejects(
-    demoStatus.action(gladys, { actionKey: 'unknown', params: {}, settings: {}, config }),
-    /Unknown widget action/,
-  );
-});
-
-test('refreshWidgets nudges every widget', () => {
-  const fresh = createFakeGladys();
-  refreshWidgets(fresh);
-  assert.deepEqual(fresh.fake.widgetRefreshes, Object.keys(WIDGETS));
+test('the widget is asked to refresh when a zone changes, not at every tick', async () => {
+  const world = await createWorld({
+    config: CONFIG,
+    feeds: { belgium: 'belgium.atom.xml' },
+    now: '2026-10-15T05:58:00Z',
+  });
+  await world.createAll();
+  const count = () => world.gladys.fake.widgetRefreshes.length;
+  const before = count();
+  world.advance(60_000);
+  await world.app.refresh();
+  assert.equal(count(), before, '05:59: nothing changed');
+  world.advance(60_000);
+  await world.app.refresh();
+  assert.equal(count(), before + 1, '06:00: the wind comes into force');
 });

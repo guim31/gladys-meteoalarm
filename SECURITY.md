@@ -30,6 +30,21 @@ Gladys before reporting a problem.
 
 In scope: the code of this repository and the Docker image it publishes.
 
+What the integration handles:
+
+- **No secret.** The MeteoAlarm feeds are public: no account, no key, no
+  password in the configuration or under `/data`.
+- **Location.** The manifest declares `location: true` to read the
+  coordinates of the house chosen in the configuration, only to place it in
+  the warning areas. They are never logged, never stored under `/data` and
+  never sent anywhere.
+- **`/data/meteoalarm.json`**: the zones seen in the feeds (names and codes),
+  the warning levels each device already announced, and whether a country
+  outlines its areas. Nothing personal.
+- **Network**: outbound HTTPS only, to `feeds.meteoalarm.org` (the Atom feed
+  of the configured country, and the CAP documents it links — any other host
+  linked by a feed is refused). No port opened, no local network access.
+
 Out of scope: Gladys Assistant itself (see its
 [security policy](https://github.com/GladysAssistant/Gladys/security/policy)),
-and the third-party services and devices the integration talks to.
+and the MeteoAlarm service and the warnings of the weather services.

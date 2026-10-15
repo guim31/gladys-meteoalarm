@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<alert
+	xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+	<identifier>2.49.0.0.56.0.BE.20261012</identifier>
+	<sender>meteoalarm@meteo.be</sender>
+	<sent>2026-10-15T05:00:00+00:00</sent>
+	<status>Actual</status>
+	<msgType>Alert</msgType>
+	<scope>Public</scope>
+	<info>
+		<language>fr-BE</language>
+		<category>Met</category>
+		<event>Avertissement jaune pluie</event>
+		<responseType>Monitor</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<effective>2026-10-15T05:00:00+00:00</effective>
+		<onset>2026-10-16T00:00:00+00:00</onset>
+		<expires>2026-10-16T18:00:00+00:00</expires>
+		<senderName>IRM - KMI</senderName>
+		<headline>Pluies abondantes</headline>
+		<description>Cumuls de 30 à 40 mm en 24 heures.</description>
+		<instruction>Évitez les zones inondables.</instruction>
+		<web>https://www.meteo.be</web>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>10; Rain</value>
+		</parameter>
+		<area>
+			<areaDesc>Liège</areaDesc>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE332</value>
+			</geocode>
+		</area>
+		<area>
+			<areaDesc>Namur</areaDesc>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE352</value>
+			</geocode>
+		</area>
+	</info>
+	<info>
+		<language>en-GB</language>
+		<category>Met</category>
+		<event>Yellow rain warning</event>
+		<responseType>Monitor</responseType>
+		<urgency>Future</urgency>
+		<severity>Moderate</severity>
+		<certainty>Likely</certainty>
+		<effective>2026-10-15T05:00:00+00:00</effective>
+		<onset>2026-10-16T00:00:00+00:00</onset>
+		<expires>2026-10-16T18:00:00+00:00</expires>
+		<senderName>IRM - KMI</senderName>
+		<headline>Heavy rain</headline>
+		<description>30 to 40 mm of rain in 24 hours.</description>
+		<instruction>Avoid flood-prone areas.</instruction>
+		<web>https://www.meteo.be</web>
+		<parameter>
+			<valueName>awareness_level</valueName>
+			<value>2; yellow; Moderate</value>
+		</parameter>
+		<parameter>
+			<valueName>awareness_type</valueName>
+			<value>10; Rain</value>
+		</parameter>
+		<area>
+			<areaDesc>Liège</areaDesc>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE332</value>
+			</geocode>
+		</area>
+		<area>
+			<areaDesc>Namur</areaDesc>
+			<geocode>
+				<valueName>NUTS3</valueName>
+				<value>BE352</value>
+			</geocode>
+		</area>
+	</info>
+</alert>

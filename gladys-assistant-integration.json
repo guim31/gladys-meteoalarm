@@ -1,177 +1,1117 @@
 {
   "manifest_version": 1,
   "type": "device",
-  "name": "Demo Devices Template",
+  "name": "MeteoAlarm",
   "description": {
-    "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
-    "fr": "Template de démarrage : capteurs, interrupteur, lampe variable et prise connectée."
+    "en": "Official weather warnings of 38 European countries (MeteoAlarm): level, phenomenon, times.",
+    "fr": "Vigilances météo officielles de 38 pays européens (MeteoAlarm) : niveau, phénomène, horaires.",
+    "de": "Amtliche Wetterwarnungen aus 38 europäischen Ländern (MeteoAlarm): Stufe, Phänomen, Zeiten.",
+    "es": "Avisos meteorológicos oficiales de 38 países europeos (MeteoAlarm): nivel, fenómeno, horarios."
   },
   "version": "1.0.0",
-  "docker_image": "ghcr.io/gladysassistant/integration-template-js:1.0.0",
-  "gladys_version": ">=5.1.0",
-  "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
-  "categories": ["lighting", "security", "environment"],
-  "transports": ["local", "cloud"],
+  "docker_image": "ghcr.io/guim31/gladys-meteoalarm:1.0.0",
+  "gladys_version": ">=5.2.0",
+  "cover_image": "https://raw.githubusercontent.com/guim31/gladys-meteoalarm/main/cover.png",
+  "categories": ["environment"],
+  "transports": ["cloud"],
+  "location": true,
   "config_schema": [
     {
       "key": "intro",
       "type": "section",
-      "label": { "en": "Getting started", "fr": "Pour commencer" },
+      "label": {
+        "en": "MeteoAlarm warnings",
+        "fr": "Vigilances MeteoAlarm",
+        "de": "MeteoAlarm-Warnungen",
+        "es": "Alertas MeteoAlarm"
+      },
       "description": {
-        "en": "The demo weather station reads real data from the free Open-Meteo API: pick the coordinates to observe. No account, no API key.",
-        "fr": "La station météo de démonstration lit de vraies données via l'API gratuite Open-Meteo : choisissez les coordonnées à observer. Pas de compte, pas de clé d'API."
+        "en": "Follows the official warnings that the weather services of 38 countries publish on MeteoAlarm (EUMETNET): one device per zone, refreshed every 10 or 15 minutes. No account needed. Choose the country, then type your zones as they appear on meteoalarm.org, or their code; the \"List the zones\" action shows the zones the feed knows. For France, the Météo-France integration is more detailed. Not affiliated with EUMETNET or MeteoAlarm.",
+        "fr": "Suit les vigilances officielles que les services météo de 38 pays publient sur MeteoAlarm (EUMETNET) : un appareil par zone, relevé toutes les 10 ou 15 minutes. Aucun compte nécessaire. Choisissez le pays, puis saisissez vos zones comme sur meteoalarm.org, ou leur code ; l'action « Lister les zones » montre les zones que le flux connaît. Pour la France, l'intégration Météo-France est plus détaillée. Sans lien avec EUMETNET ni MeteoAlarm.",
+        "de": "Verfolgt die amtlichen Warnungen, die die Wetterdienste von 38 Ländern auf MeteoAlarm (EUMETNET) veröffentlichen: ein Gerät pro Zone, alle 10 oder 15 Minuten abgefragt. Kein Konto nötig. Wähle das Land und gib dann deine Zonen wie auf meteoalarm.org oder ihren Code ein; die Aktion „Zonen auflisten“ zeigt die Zonen, die der Feed kennt. Für Frankreich ist die Météo-France-Integration genauer. Nicht mit EUMETNET oder MeteoAlarm verbunden.",
+        "es": "Sigue los avisos oficiales que los servicios meteorológicos de 38 países publican en MeteoAlarm (EUMETNET): un dispositivo por zona, consultado cada 10 o 15 minutos. No se necesita cuenta. Elija el país y escriba sus zonas como aparecen en meteoalarm.org, o su código; la acción «Listar las zonas» muestra las zonas que conoce la fuente. Para Francia, la integración Météo-France es más detallada. Sin relación con EUMETNET ni MeteoAlarm."
       },
       "links": [
         {
-          "url": "https://open-meteo.com/en/docs",
-          "label": { "en": "Open-Meteo documentation", "fr": "Documentation Open-Meteo" }
+          "url": "https://meteoalarm.org",
+          "label": {
+            "en": "MeteoAlarm map",
+            "fr": "Carte MeteoAlarm",
+            "de": "MeteoAlarm-Karte",
+            "es": "Mapa de MeteoAlarm"
+          }
         }
       ]
     },
     {
-      "key": "latitude",
-      "type": "number",
-      "label": { "en": "Latitude", "fr": "Latitude" },
-      "description": {
-        "en": "Latitude used for the demo weather sensor.",
-        "fr": "Latitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 48.8566", "fr": "ex. 48.8566" },
-      "required": true,
-      "default": 48.8566,
-      "min": -90,
-      "max": 90
-    },
-    {
-      "key": "longitude",
-      "type": "number",
-      "label": { "en": "Longitude", "fr": "Longitude" },
-      "description": {
-        "en": "Longitude used for the demo weather sensor.",
-        "fr": "Longitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 2.3522", "fr": "ex. 2.3522" },
-      "required": true,
-      "default": 2.3522,
-      "min": -180,
-      "max": 180
-    },
-    {
-      "key": "unit",
+      "key": "country",
       "type": "select",
-      "label": { "en": "Temperature unit", "fr": "Unité de température" },
-      "required": false,
-      "default": "celsius",
+      "label": {
+        "en": "Country",
+        "fr": "Pays",
+        "de": "Land",
+        "es": "País"
+      },
+      "required": true,
       "options": [
-        { "value": "celsius", "label": { "en": "Celsius", "fr": "Celsius" } },
-        { "value": "fahrenheit", "label": { "en": "Fahrenheit", "fr": "Fahrenheit" } }
+        {
+          "value": "austria",
+          "label": {
+            "en": "Austria",
+            "fr": "Autriche",
+            "de": "Österreich",
+            "es": "Austria"
+          }
+        },
+        {
+          "value": "belgium",
+          "label": {
+            "en": "Belgium",
+            "fr": "Belgique",
+            "de": "Belgien",
+            "es": "Bélgica"
+          }
+        },
+        {
+          "value": "bosnia-herzegovina",
+          "label": {
+            "en": "Bosnia and Herzegovina",
+            "fr": "Bosnie-Herzégovine",
+            "de": "Bosnien und Herzegowina",
+            "es": "Bosnia y Herzegovina"
+          }
+        },
+        {
+          "value": "bulgaria",
+          "label": {
+            "en": "Bulgaria",
+            "fr": "Bulgarie",
+            "de": "Bulgarien",
+            "es": "Bulgaria"
+          }
+        },
+        {
+          "value": "croatia",
+          "label": {
+            "en": "Croatia",
+            "fr": "Croatie",
+            "de": "Kroatien",
+            "es": "Croacia"
+          }
+        },
+        {
+          "value": "cyprus",
+          "label": {
+            "en": "Cyprus",
+            "fr": "Chypre",
+            "de": "Zypern",
+            "es": "Chipre"
+          }
+        },
+        {
+          "value": "czechia",
+          "label": {
+            "en": "Czechia",
+            "fr": "Tchéquie",
+            "de": "Tschechien",
+            "es": "Chequia"
+          }
+        },
+        {
+          "value": "denmark",
+          "label": {
+            "en": "Denmark",
+            "fr": "Danemark",
+            "de": "Dänemark",
+            "es": "Dinamarca"
+          }
+        },
+        {
+          "value": "estonia",
+          "label": {
+            "en": "Estonia",
+            "fr": "Estonie",
+            "de": "Estland",
+            "es": "Estonia"
+          }
+        },
+        {
+          "value": "finland",
+          "label": {
+            "en": "Finland",
+            "fr": "Finlande",
+            "de": "Finnland",
+            "es": "Finlandia"
+          }
+        },
+        {
+          "value": "france",
+          "label": {
+            "en": "France",
+            "fr": "France",
+            "de": "Frankreich",
+            "es": "Francia"
+          }
+        },
+        {
+          "value": "germany",
+          "label": {
+            "en": "Germany",
+            "fr": "Allemagne",
+            "de": "Deutschland",
+            "es": "Alemania"
+          }
+        },
+        {
+          "value": "greece",
+          "label": {
+            "en": "Greece",
+            "fr": "Grèce",
+            "de": "Griechenland",
+            "es": "Grecia"
+          }
+        },
+        {
+          "value": "hungary",
+          "label": {
+            "en": "Hungary",
+            "fr": "Hongrie",
+            "de": "Ungarn",
+            "es": "Hungría"
+          }
+        },
+        {
+          "value": "iceland",
+          "label": {
+            "en": "Iceland",
+            "fr": "Islande",
+            "de": "Island",
+            "es": "Islandia"
+          }
+        },
+        {
+          "value": "ireland",
+          "label": {
+            "en": "Ireland",
+            "fr": "Irlande",
+            "de": "Irland",
+            "es": "Irlanda"
+          }
+        },
+        {
+          "value": "israel",
+          "label": {
+            "en": "Israel",
+            "fr": "Israël",
+            "de": "Israel",
+            "es": "Israel"
+          }
+        },
+        {
+          "value": "italy",
+          "label": {
+            "en": "Italy",
+            "fr": "Italie",
+            "de": "Italien",
+            "es": "Italia"
+          }
+        },
+        {
+          "value": "latvia",
+          "label": {
+            "en": "Latvia",
+            "fr": "Lettonie",
+            "de": "Lettland",
+            "es": "Letonia"
+          }
+        },
+        {
+          "value": "lithuania",
+          "label": {
+            "en": "Lithuania",
+            "fr": "Lituanie",
+            "de": "Litauen",
+            "es": "Lituania"
+          }
+        },
+        {
+          "value": "luxembourg",
+          "label": {
+            "en": "Luxembourg",
+            "fr": "Luxembourg",
+            "de": "Luxemburg",
+            "es": "Luxemburgo"
+          }
+        },
+        {
+          "value": "malta",
+          "label": {
+            "en": "Malta",
+            "fr": "Malte",
+            "de": "Malta",
+            "es": "Malta"
+          }
+        },
+        {
+          "value": "moldova",
+          "label": {
+            "en": "Moldova",
+            "fr": "Moldavie",
+            "de": "Moldau",
+            "es": "Moldavia"
+          }
+        },
+        {
+          "value": "montenegro",
+          "label": {
+            "en": "Montenegro",
+            "fr": "Monténégro",
+            "de": "Montenegro",
+            "es": "Montenegro"
+          }
+        },
+        {
+          "value": "netherlands",
+          "label": {
+            "en": "Netherlands",
+            "fr": "Pays-Bas",
+            "de": "Niederlande",
+            "es": "Países Bajos"
+          }
+        },
+        {
+          "value": "norway",
+          "label": {
+            "en": "Norway",
+            "fr": "Norvège",
+            "de": "Norwegen",
+            "es": "Noruega"
+          }
+        },
+        {
+          "value": "poland",
+          "label": {
+            "en": "Poland",
+            "fr": "Pologne",
+            "de": "Polen",
+            "es": "Polonia"
+          }
+        },
+        {
+          "value": "portugal",
+          "label": {
+            "en": "Portugal",
+            "fr": "Portugal",
+            "de": "Portugal",
+            "es": "Portugal"
+          }
+        },
+        {
+          "value": "republic-of-north-macedonia",
+          "label": {
+            "en": "North Macedonia",
+            "fr": "Macédoine du Nord",
+            "de": "Nordmazedonien",
+            "es": "Macedonia del Norte"
+          }
+        },
+        {
+          "value": "romania",
+          "label": {
+            "en": "Romania",
+            "fr": "Roumanie",
+            "de": "Rumänien",
+            "es": "Rumanía"
+          }
+        },
+        {
+          "value": "serbia",
+          "label": {
+            "en": "Serbia",
+            "fr": "Serbie",
+            "de": "Serbien",
+            "es": "Serbia"
+          }
+        },
+        {
+          "value": "slovakia",
+          "label": {
+            "en": "Slovakia",
+            "fr": "Slovaquie",
+            "de": "Slowakei",
+            "es": "Eslovaquia"
+          }
+        },
+        {
+          "value": "slovenia",
+          "label": {
+            "en": "Slovenia",
+            "fr": "Slovénie",
+            "de": "Slowenien",
+            "es": "Eslovenia"
+          }
+        },
+        {
+          "value": "spain",
+          "label": {
+            "en": "Spain",
+            "fr": "Espagne",
+            "de": "Spanien",
+            "es": "España"
+          }
+        },
+        {
+          "value": "sweden",
+          "label": {
+            "en": "Sweden",
+            "fr": "Suède",
+            "de": "Schweden",
+            "es": "Suecia"
+          }
+        },
+        {
+          "value": "switzerland",
+          "label": {
+            "en": "Switzerland",
+            "fr": "Suisse",
+            "de": "Schweiz",
+            "es": "Suiza"
+          }
+        },
+        {
+          "value": "ukraine",
+          "label": {
+            "en": "Ukraine",
+            "fr": "Ukraine",
+            "de": "Ukraine",
+            "es": "Ucrania"
+          }
+        },
+        {
+          "value": "united-kingdom",
+          "label": {
+            "en": "United Kingdom",
+            "fr": "Royaume-Uni",
+            "de": "Vereinigtes Königreich",
+            "es": "Reino Unido"
+          }
+        }
       ]
     },
     {
-      "key": "poll_frequency",
-      "type": "number",
-      "label": { "en": "Refresh interval (s)", "fr": "Intervalle de rafraîchissement (s)" },
+      "key": "zones",
+      "type": "string",
+      "label": {
+        "en": "Zones",
+        "fr": "Zones",
+        "de": "Zonen",
+        "es": "Zonas"
+      },
       "description": {
-        "en": "How often sensors are polled, in seconds (one minute minimum).",
-        "fr": "Fréquence d'interrogation des capteurs, en secondes (une minute minimum)."
+        "en": "Area names or codes, separated by commas (10 at most): one device each. Accents and case do not matter.",
+        "fr": "Noms ou codes des zones, séparés par des virgules (10 au plus) : un appareil chacune. Accents et majuscules indifférents.",
+        "de": "Namen oder Codes der Zonen, durch Kommas getrennt (höchstens 10): je ein Gerät. Akzente und Großschreibung egal.",
+        "es": "Nombres o códigos de las zonas, separados por comas (10 como máximo): un dispositivo cada una. Da igual tildes y mayúsculas."
+      },
+      "placeholder": {
+        "en": "e.g. Liège, BE004",
+        "fr": "ex. Liège, BE004",
+        "de": "z. B. Liège, BE004",
+        "es": "p. ej. Liège, BE004"
       },
       "required": false,
-      "default": 300,
-      "min": 60,
-      "max": 3600
+      "default": ""
+    },
+    {
+      "key": "house",
+      "type": "select",
+      "source": "houses",
+      "label": {
+        "en": "House (optional)",
+        "fr": "Maison (facultatif)",
+        "de": "Haus (optional)",
+        "es": "Vivienda (opcional)"
+      },
+      "description": {
+        "en": "Also follows the warnings whose area contains this house. Works only where the issuer outlines its areas: see the documentation.",
+        "fr": "Suit aussi les vigilances dont la zone contient cette maison. Ne marche que si l'émetteur donne le contour de ses zones : voir la documentation.",
+        "de": "Verfolgt auch die Warnungen, deren Zone dieses Haus enthält. Klappt nur, wenn der Herausgeber die Umrisse liefert: siehe Dokumentation.",
+        "es": "Sigue también los avisos cuya zona contiene esta vivienda. Solo funciona si el emisor da el contorno de sus zonas: vea la documentación."
+      },
+      "required": false
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "label": {
+        "en": "Language",
+        "fr": "Langue",
+        "de": "Sprache",
+        "es": "Idioma"
+      },
+      "description": {
+        "en": "Feature names and texts sent to Gladys. Warning texts follow it when the issuer writes that language, else English.",
+        "fr": "Noms des fonctionnalités et textes envoyés à Gladys. Les textes des vigilances la suivent si l'émetteur l'écrit, sinon l'anglais.",
+        "de": "Namen der Funktionen und an Gladys gesendete Texte. Warntexte folgen ihr, wenn der Herausgeber sie schreibt, sonst Englisch.",
+        "es": "Nombres de las funciones y textos enviados a Gladys. Los textos de los avisos la siguen si el emisor la escribe; si no, inglés."
+      },
+      "required": false,
+      "default": "fr",
+      "options": [
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ]
+    },
+    {
+      "key": "refresh_minutes",
+      "type": "select",
+      "label": {
+        "en": "Refresh",
+        "fr": "Relève",
+        "de": "Abfrage",
+        "es": "Consulta"
+      },
+      "description": {
+        "en": "How often the MeteoAlarm feed is read. Start and end times are followed to the minute either way.",
+        "fr": "Fréquence de lecture du flux MeteoAlarm. Les heures de début et de fin sont suivies à la minute dans tous les cas.",
+        "de": "Wie oft der MeteoAlarm-Feed gelesen wird. Beginn und Ende werden in jedem Fall minutengenau verfolgt.",
+        "es": "Frecuencia de lectura de la fuente MeteoAlarm. Las horas de inicio y fin se siguen al minuto en todo caso."
+      },
+      "required": false,
+      "default": "15",
+      "options": [
+        {
+          "value": "10",
+          "label": {
+            "en": "Every 10 minutes",
+            "fr": "Toutes les 10 minutes",
+            "de": "Alle 10 Minuten",
+            "es": "Cada 10 minutos"
+          }
+        },
+        {
+          "value": "15",
+          "label": {
+            "en": "Every 15 minutes",
+            "fr": "Toutes les 15 minutes",
+            "de": "Alle 15 Minuten",
+            "es": "Cada 15 minutos"
+          }
+        }
+      ]
     }
   ],
   "actions": [
     {
-      "key": "test_weather",
-      "label": { "en": "Test the weather provider", "fr": "Tester le fournisseur météo" },
-      "timeout_seconds": 30
-    },
-    {
-      "key": "identify",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "fields": [
-        {
-          "key": "device",
-          "type": "select",
-          "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
-        }
-      ]
+      "key": "list_zones",
+      "label": {
+        "en": "List the zones",
+        "fr": "Lister les zones",
+        "de": "Zonen auflisten",
+        "es": "Listar las zonas"
+      },
+      "description": {
+        "en": "Reads the feed now and lists the zones known for the country, with their code, and whether yours were found.",
+        "fr": "Lit le flux maintenant et liste les zones connues pour le pays, avec leur code, et si les vôtres ont été trouvées.",
+        "de": "Liest den Feed jetzt und listet die bekannten Zonen des Landes mit ihrem Code auf, und ob deine gefunden wurden.",
+        "es": "Lee la fuente ahora y lista las zonas conocidas del país, con su código, y si se han encontrado las suyas."
+      },
+      "timeout_seconds": 60
     }
   ],
   "scene_triggers": [
     {
-      "key": "motion_detected",
-      "label": { "en": "Motion detected", "fr": "Mouvement détecté" },
+      "key": "warning_issued",
+      "label": {
+        "en": "New weather warning",
+        "fr": "Nouvelle vigilance météo",
+        "de": "Neue Wetterwarnung",
+        "es": "Nueva alerta meteorológica"
+      },
       "description": {
-        "en": "A demo motion sensor saw a person or an animal move.",
-        "fr": "Un détecteur de démonstration a vu bouger une personne ou un animal."
+        "en": "A warning appears for a zone, or its level rises, often before it starts.",
+        "fr": "Une vigilance apparaît sur une zone, ou son niveau monte, souvent avant son début.",
+        "de": "Eine Warnung erscheint für eine Zone oder ihre Stufe steigt, oft schon vor Beginn.",
+        "es": "Aparece una alerta en una zona o sube su nivel, a menudo antes de su inicio."
       },
       "fields": [
         {
           "key": "device",
           "type": "select",
           "source": "devices",
-          "label": { "en": "Sensor", "fr": "Détecteur" }
+          "label": {
+            "en": "Zone",
+            "fr": "Zone",
+            "de": "Zone",
+            "es": "Zona"
+          }
         },
         {
-          "key": "target",
+          "key": "level",
           "type": "multi_select",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" },
+          "label": {
+            "en": "Levels",
+            "fr": "Niveaux",
+            "de": "Stufen",
+            "es": "Niveles"
+          },
           "options": [
-            { "value": "person", "label": { "en": "Person", "fr": "Personne" } },
-            { "value": "animal", "label": { "en": "Animal", "fr": "Animal" } }
+            {
+              "value": "yellow",
+              "label": {
+                "en": "Yellow",
+                "fr": "Jaune",
+                "de": "Gelb",
+                "es": "Amarillo"
+              }
+            },
+            {
+              "value": "orange",
+              "label": {
+                "en": "Orange",
+                "fr": "Orange",
+                "de": "Orange",
+                "es": "Naranja"
+              }
+            },
+            {
+              "value": "red",
+              "label": {
+                "en": "Red",
+                "fr": "Rouge",
+                "de": "Rot",
+                "es": "Rojo"
+              }
+            }
+          ]
+        },
+        {
+          "key": "phenomenon",
+          "type": "multi_select",
+          "label": {
+            "en": "Phenomena",
+            "fr": "Phénomènes",
+            "de": "Phänomene",
+            "es": "Fenómenos"
+          },
+          "options": [
+            {
+              "value": "wind",
+              "label": {
+                "en": "Wind",
+                "fr": "Vent",
+                "de": "Wind",
+                "es": "Viento"
+              }
+            },
+            {
+              "value": "snow_ice",
+              "label": {
+                "en": "Snow and ice",
+                "fr": "Neige-verglas",
+                "de": "Schnee und Glätte",
+                "es": "Nieve y hielo"
+              }
+            },
+            {
+              "value": "thunderstorm",
+              "label": {
+                "en": "Thunderstorms",
+                "fr": "Orages",
+                "de": "Gewitter",
+                "es": "Tormentas"
+              }
+            },
+            {
+              "value": "fog",
+              "label": {
+                "en": "Fog",
+                "fr": "Brouillard",
+                "de": "Nebel",
+                "es": "Niebla"
+              }
+            },
+            {
+              "value": "high_temperature",
+              "label": {
+                "en": "Heat",
+                "fr": "Canicule",
+                "de": "Hitze",
+                "es": "Calor"
+              }
+            },
+            {
+              "value": "low_temperature",
+              "label": {
+                "en": "Cold",
+                "fr": "Grand froid",
+                "de": "Kälte",
+                "es": "Frío"
+              }
+            },
+            {
+              "value": "coastal_event",
+              "label": {
+                "en": "Coastal event",
+                "fr": "Vagues-submersion",
+                "de": "Sturmflut",
+                "es": "Fenómenos costeros"
+              }
+            },
+            {
+              "value": "forest_fire",
+              "label": {
+                "en": "Forest fire",
+                "fr": "Feux de forêt",
+                "de": "Waldbrand",
+                "es": "Incendios forestales"
+              }
+            },
+            {
+              "value": "avalanches",
+              "label": {
+                "en": "Avalanches",
+                "fr": "Avalanches",
+                "de": "Lawinen",
+                "es": "Avalanchas"
+              }
+            },
+            {
+              "value": "rain",
+              "label": {
+                "en": "Rain",
+                "fr": "Pluie",
+                "de": "Regen",
+                "es": "Lluvia"
+              }
+            },
+            {
+              "value": "flooding",
+              "label": {
+                "en": "Flooding",
+                "fr": "Crues",
+                "de": "Hochwasser",
+                "es": "Inundaciones"
+              }
+            },
+            {
+              "value": "rain_flood",
+              "label": {
+                "en": "Rain and flooding",
+                "fr": "Pluie-inondation",
+                "de": "Starkregen und Hochwasser",
+                "es": "Lluvia e inundaciones"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "fr": "Autre",
+                "de": "Sonstiges",
+                "es": "Otro"
+              }
+            }
           ]
         }
       ],
       "variables": [
         {
-          "key": "target",
+          "key": "zone",
           "type": "string",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" }
+          "label": {
+            "en": "Zone name",
+            "fr": "Nom de la zone",
+            "de": "Name der Zone",
+            "es": "Nombre de la zona"
+          }
+        },
+        {
+          "key": "level",
+          "type": "string",
+          "label": {
+            "en": "Level (yellow, orange, red)",
+            "fr": "Niveau (yellow, orange, red)",
+            "de": "Stufe (yellow, orange, red)",
+            "es": "Nivel (yellow, orange, red)"
+          }
+        },
+        {
+          "key": "level_label",
+          "type": "string",
+          "label": {
+            "en": "Level, in words",
+            "fr": "Niveau, en toutes lettres",
+            "de": "Stufe, ausgeschrieben",
+            "es": "Nivel, en palabras"
+          }
+        },
+        {
+          "key": "phenomenon",
+          "type": "string",
+          "label": {
+            "en": "Phenomenon (key)",
+            "fr": "Phénomène (clé)",
+            "de": "Phänomen (Schlüssel)",
+            "es": "Fenómeno (clave)"
+          }
+        },
+        {
+          "key": "phenomenon_label",
+          "type": "string",
+          "label": {
+            "en": "Phenomenon, in words",
+            "fr": "Phénomène, en toutes lettres",
+            "de": "Phänomen, ausgeschrieben",
+            "es": "Fenómeno, en palabras"
+          }
+        },
+        {
+          "key": "in_force",
+          "type": "boolean",
+          "label": {
+            "en": "Already in force",
+            "fr": "Déjà en cours",
+            "de": "Bereits aktiv",
+            "es": "Ya vigente"
+          }
+        },
+        {
+          "key": "period",
+          "type": "string",
+          "label": {
+            "en": "Period, in words",
+            "fr": "Période, en toutes lettres",
+            "de": "Zeitraum, ausgeschrieben",
+            "es": "Periodo, en palabras"
+          }
+        },
+        {
+          "key": "onset",
+          "type": "string",
+          "label": {
+            "en": "Start (ISO date)",
+            "fr": "Début (date ISO)",
+            "de": "Beginn (ISO-Datum)",
+            "es": "Inicio (fecha ISO)"
+          }
+        },
+        {
+          "key": "expires",
+          "type": "string",
+          "label": {
+            "en": "End (ISO date)",
+            "fr": "Fin (date ISO)",
+            "de": "Ende (ISO-Datum)",
+            "es": "Fin (fecha ISO)"
+          }
+        },
+        {
+          "key": "headline",
+          "type": "string",
+          "label": {
+            "en": "Headline",
+            "fr": "Titre",
+            "de": "Überschrift",
+            "es": "Titular"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "label": {
+            "en": "Description",
+            "fr": "Description",
+            "de": "Beschreibung",
+            "es": "Descripción"
+          }
+        },
+        {
+          "key": "instruction",
+          "type": "string",
+          "label": {
+            "en": "Advice",
+            "fr": "Conseils",
+            "de": "Empfehlungen",
+            "es": "Recomendaciones"
+          }
         }
       ]
-    }
-  ],
-  "scene_actions": [
+    },
     {
-      "key": "identify_device",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "description": {
-        "en": "Make a device signal itself (the demo light blinks).",
-        "fr": "Fait se signaler un appareil (la lampe de démonstration clignote)."
+      "key": "warning_lifted",
+      "label": {
+        "en": "Weather warning lifted",
+        "fr": "Vigilance météo levée",
+        "de": "Wetterwarnung aufgehoben",
+        "es": "Alerta meteorológica finalizada"
       },
-      "timeout_seconds": 15,
+      "description": {
+        "en": "A zone has no warning left for a phenomenon: expired or withdrawn.",
+        "fr": "Une zone n'a plus de vigilance pour un phénomène : terminée ou retirée.",
+        "de": "Eine Zone hat für ein Phänomen keine Warnung mehr: abgelaufen oder zurückgezogen.",
+        "es": "Una zona ya no tiene alerta para un fenómeno: terminada o retirada."
+      },
       "fields": [
         {
           "key": "device",
           "type": "select",
           "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
+          "label": {
+            "en": "Zone",
+            "fr": "Zone",
+            "de": "Zone",
+            "es": "Zona"
+          }
+        },
+        {
+          "key": "phenomenon",
+          "type": "multi_select",
+          "label": {
+            "en": "Phenomena",
+            "fr": "Phénomènes",
+            "de": "Phänomene",
+            "es": "Fenómenos"
+          },
+          "options": [
+            {
+              "value": "wind",
+              "label": {
+                "en": "Wind",
+                "fr": "Vent",
+                "de": "Wind",
+                "es": "Viento"
+              }
+            },
+            {
+              "value": "snow_ice",
+              "label": {
+                "en": "Snow and ice",
+                "fr": "Neige-verglas",
+                "de": "Schnee und Glätte",
+                "es": "Nieve y hielo"
+              }
+            },
+            {
+              "value": "thunderstorm",
+              "label": {
+                "en": "Thunderstorms",
+                "fr": "Orages",
+                "de": "Gewitter",
+                "es": "Tormentas"
+              }
+            },
+            {
+              "value": "fog",
+              "label": {
+                "en": "Fog",
+                "fr": "Brouillard",
+                "de": "Nebel",
+                "es": "Niebla"
+              }
+            },
+            {
+              "value": "high_temperature",
+              "label": {
+                "en": "Heat",
+                "fr": "Canicule",
+                "de": "Hitze",
+                "es": "Calor"
+              }
+            },
+            {
+              "value": "low_temperature",
+              "label": {
+                "en": "Cold",
+                "fr": "Grand froid",
+                "de": "Kälte",
+                "es": "Frío"
+              }
+            },
+            {
+              "value": "coastal_event",
+              "label": {
+                "en": "Coastal event",
+                "fr": "Vagues-submersion",
+                "de": "Sturmflut",
+                "es": "Fenómenos costeros"
+              }
+            },
+            {
+              "value": "forest_fire",
+              "label": {
+                "en": "Forest fire",
+                "fr": "Feux de forêt",
+                "de": "Waldbrand",
+                "es": "Incendios forestales"
+              }
+            },
+            {
+              "value": "avalanches",
+              "label": {
+                "en": "Avalanches",
+                "fr": "Avalanches",
+                "de": "Lawinen",
+                "es": "Avalanchas"
+              }
+            },
+            {
+              "value": "rain",
+              "label": {
+                "en": "Rain",
+                "fr": "Pluie",
+                "de": "Regen",
+                "es": "Lluvia"
+              }
+            },
+            {
+              "value": "flooding",
+              "label": {
+                "en": "Flooding",
+                "fr": "Crues",
+                "de": "Hochwasser",
+                "es": "Inundaciones"
+              }
+            },
+            {
+              "value": "rain_flood",
+              "label": {
+                "en": "Rain and flooding",
+                "fr": "Pluie-inondation",
+                "de": "Starkregen und Hochwasser",
+                "es": "Lluvia e inundaciones"
+              }
+            },
+            {
+              "value": "other",
+              "label": {
+                "en": "Other",
+                "fr": "Autre",
+                "de": "Sonstiges",
+                "es": "Otro"
+              }
+            }
+          ]
         }
       ],
-      "outputs": [
+      "variables": [
         {
-          "key": "signalled",
-          "type": "boolean",
-          "label": { "en": "Device signalled", "fr": "Appareil signalé" }
+          "key": "zone",
+          "type": "string",
+          "label": {
+            "en": "Zone name",
+            "fr": "Nom de la zone",
+            "de": "Name der Zone",
+            "es": "Nombre de la zona"
+          }
+        },
+        {
+          "key": "level",
+          "type": "string",
+          "label": {
+            "en": "Level (yellow, orange, red)",
+            "fr": "Niveau (yellow, orange, red)",
+            "de": "Stufe (yellow, orange, red)",
+            "es": "Nivel (yellow, orange, red)"
+          }
+        },
+        {
+          "key": "level_label",
+          "type": "string",
+          "label": {
+            "en": "Level, in words",
+            "fr": "Niveau, en toutes lettres",
+            "de": "Stufe, ausgeschrieben",
+            "es": "Nivel, en palabras"
+          }
+        },
+        {
+          "key": "phenomenon",
+          "type": "string",
+          "label": {
+            "en": "Phenomenon (key)",
+            "fr": "Phénomène (clé)",
+            "de": "Phänomen (Schlüssel)",
+            "es": "Fenómeno (clave)"
+          }
+        },
+        {
+          "key": "phenomenon_label",
+          "type": "string",
+          "label": {
+            "en": "Phenomenon, in words",
+            "fr": "Phénomène, en toutes lettres",
+            "de": "Phänomen, ausgeschrieben",
+            "es": "Fenómeno, en palabras"
+          }
         }
       ]
     }
   ],
   "widgets": [
     {
-      "key": "demo_status",
-      "label": { "en": "Demo status", "fr": "État de la démo" },
-      "description": {
-        "en": "Live temperature and plug power, plug connection and observed location.",
-        "fr": "Température et puissance en direct, connexion de la prise, position observée."
+      "key": "warnings",
+      "label": {
+        "en": "Weather warnings",
+        "fr": "Vigilances météo",
+        "de": "Wetterwarnungen",
+        "es": "Alertas meteorológicas"
       },
-      "icon": "activity",
-      "action_timeout_seconds": 15
+      "description": {
+        "en": "Warnings of a zone, in force and upcoming: color, phenomenon, times, full text.",
+        "fr": "Vigilances d'une zone, en cours et à venir : couleur, phénomène, horaires, texte complet.",
+        "de": "Warnungen einer Zone, aktiv und angekündigt: Farbe, Phänomen, Zeiten, ganzer Text.",
+        "es": "Alertas de una zona, vigentes y próximas: color, fenómeno, horarios, texto completo."
+      },
+      "icon": "alert-triangle",
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "label": {
+            "en": "Zone",
+            "fr": "Zone",
+            "de": "Zone",
+            "es": "Zona"
+          },
+          "required": true
+        }
+      ]
     }
   ]
 }

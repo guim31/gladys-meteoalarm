@@ -11,17 +11,22 @@ Gladys through
 [`@gladysassistant/integration-sdk`](https://github.com/GladysAssistant/integration-sdk-js),
 its only runtime dependency. It started from the official JavaScript template.
 
+This one follows the official weather warnings of 38 European countries,
+published by the national weather services on MeteoAlarm (EUMETNET), through
+its public Atom / CAP feeds. Read only, no account.
+
 ## Commands
 
 ```bash
 npm install
 npm test                                  # node --test, the built-in runner
-node --test test/devices.test.js          # one file
-node --test --test-name-pattern "plug"    # tests whose name matches
+node --test test/app.test.js              # one file
+node --test --test-name-pattern "house"   # tests whose name matches
 npm run lint                              # ESLint
 npm run format:check                      # Prettier, as the CI runs it
 npm run format                            # Prettier, fix in place
 npx github:GladysAssistant/integration-store .   # store admission checks
+node scripts/probe.mjs belgium "Liège"    # live feed, read-only (network needed)
 ```
 
 The CI (`.github/workflows/ci.yml`) runs `format:check`, `lint` and `test` on
@@ -31,16 +36,25 @@ pushing.
 ## Architecture
 
 ```
-index.js                          SDK wiring only: handlers registered before connect()
-src/devices/index.js              registry of the device blueprints + dispatch helpers
-src/devices/<type>.js             one device type per file (buildDevice, onPoll, onSetValue...)
-src/scenes.js                     scene action handlers (manifest `scene_actions`)
-src/widgets.js                    dashboard widget handlers (manifest `widgets`)
+index.js                          SDK wiring only: creates the client, registerHandlers, connect()
+src/app.js                        every handler, the refresh loop (own 1-min timer), statuses
+src/client.js                     HTTP client of the feeds: conditional GET, CAP cache, host check
+src/cap.js                        Atom + CAP parsing, awareness levels and phenomena
+src/xml.js                        the few XML readings needed (no dependency)
+src/warnings.js                   warnings of a zone / of a point, evaluate() at a given time
+src/geo.js                        point in polygon / circle
+src/devices.js                    targets (zones, house) -> Gladys devices and states
+src/triggers.js                   "warning_issued" / "warning_lifted" scene events
+src/widgets.js                    "warnings" dashboard widget
+src/i18n.js                       every text, en/fr/de/es
+src/countries.js                  the 38 feed slugs (manifest `country` options mirror it)
 src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults) + normalization
-src/weather.js                    example driver (Open-Meteo)
-gladys-assistant-integration.json manifest: name, config_schema, actions, image...
-docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
-test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
+src/store.js, src/issues.js       /data persistence, failures logged once
+scripts/probe.mjs                 read-only probe of the live feeds (not in the image)
+gladys-assistant-integration.json manifest: name, config_schema, actions, triggers, widget...
+docs/{en,fr,de,es}.md             user documentation, re-hosted by Gladys, same sections
+test/                             node --test, against the SDK's fake Gladys and a fake MeteoAlarm
+test/fixtures/feeds/              real feeds (meteoalert-api tests) + a synthetic Belgian feed
 .github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
 ```
 
@@ -70,8 +84,9 @@ test/                             node --test, against the SDK's fake Gladys (in
   `type: "provider"`: 5.1.0). `test/manifest.test.js` ties the manifest to the
   code (defaults, action, scene and widget handlers): change both sides
   together.
-- **User-facing text** is bilingual (English and French): action messages,
-  manifest texts, and `docs/en.md` / `docs/fr.md`, kept in sync.
+- **User-facing text** exists in four languages (English, French, German,
+  Spanish): action messages, manifest texts, feature names, widget texts, and
+  `docs/{en,fr,de,es}.md`, kept in sync. `test/i18n.test.js` enforces it.
 - **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
   in English. Tests never touch the network.
 
@@ -233,3 +248,33 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
 - Docs `en`, `fr`, `de`, `es` avec les mêmes sections.
 - Chauffe, ouverture, sécurité : ne rien rendre pilotable « comme un thermostat » ou par un assistant
   vocal quand une erreur serait dangereuse (leçon d'OctoPrint).
+
+## Intégration MeteoAlarm : API et pièges découverts
+
+- **Flux** : `https://feeds.meteoalarm.org/feeds/meteoalarm-legacy-atom-<pays>` (slugs de
+  `meteoalert-api`, la bibliothèque de Home Assistant : `src/countries.js`). Une `<entry>` par
+  avertissement **et** par zone (une vigilance sur 12 provinces = 12 entrées, même document CAP) ;
+  le titre est toujours en anglais (« Yellow Avalanches Warning issued for France - Haute Savoie ») et
+  donne couleur et phénomène. Le lien `?geocode=EMMA_ID:XX000` donne le code MeteoAlarm de la zone,
+  `cap:geocode` le code national (NUTS3, FIPS, EMMA_ID selon le pays).
+- **Document CAP** (lien `application/cap+xml`) : un `<info>` par langue, paramètres
+  `awareness_level` (« 3; orange; Severe ») et `awareness_type` (« 1; Wind », numéros 1 à 13, 11
+  inutilisé). Son URL désigne **une version** d'une vigilance : on le lit une fois, on l'oublie quand
+  le flux ne le cite plus. `msgType`/`message_type` `Cancel` et `status` autre qu'`Actual` ne sont
+  pas des vigilances.
+- **Le flux ne liste que les zones qui ont une vigilance** : il n'existe pas de liste complète des
+  zones d'un pays. D'où la saisie libre (nom ou code) et l'action `list_zones` qui accumule sous
+  `/data` les zones vues.
+- **Contours** : seuls certains émetteurs mettent des `<polygon>` dans le CAP (Irlande oui ; France et
+  Royaume-Uni non dans les échantillons). Le suivi d'une maison en dépend ; le statut le dit.
+- `meteoalert-api` cherche la province par **regex** dans le nom (« Savoie » attrape « Haute
+  Savoie ») : ici, égalité exacte après normalisation (accents, casse, tirets).
+- **`risk/integer`** : le front du cœur l'affiche en pastille « Pas de risque / Faible / Moyen /
+  Élevé » pour **0, 1, 2, 3**, en vert / jaune / orange / rouge (`BadgeNumberDeviceValue.jsx`,
+  depuis 5.1.0). Publier `niveau MeteoAlarm − 1` ; une valeur 4 n'aurait pas de libellé.
+- `source: "houses"` exige `gladys_version >= 5.2.0` ; lire les coordonnées (`getHouses`) exige
+  `location: true`. Les coordonnées ne sont jamais journalisées (un test le vérifie).
+- Le test d'allemand repère « Sie »/« Ihre » même quand c'est un pronom (« Sie wurde… », « Ihre
+  Sprache… » en début de phrase) : reformuler plutôt qu'assouplir le test.
+- La session de développement n'atteint pas `feeds.meteoalarm.org` (proxy) : `scripts/probe.mjs`
+  est à lancer depuis une machine qui a le réseau.
